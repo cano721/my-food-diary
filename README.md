@@ -55,6 +55,16 @@
  <img src="https://user-images.githubusercontent.com/76922918/155883409-cf448176-a5ee-4a95-9776-710821fa944c.gif">
 </p>
 
+#### 레시피 추천받기 및 레시피 상세 화면
+<p aligin="center">
+ <img src="https://user-images.githubusercontent.com/76922918/155885367-d71ad042-8ad4-450b-a1fa-fc242b6e9960.gif">
+</p>
+
+<p aligin="center">
+ <img src="https://user-images.githubusercontent.com/76922918/155885415-22016926-4663-40d2-a7b8-bc524b49286d.gif">
+</p>
+
+
 
 #### 개발자 정보
 
