@@ -57,26 +57,26 @@ for i in range(1,6):  # 페이지 돌리기
             print('제목')
 
         #대표 이미지 가져오기
-        # try:
-        #     image = soup2.select('div.centeredcrop > img')[0]
-        #     image_url = image["src"] #src속성 가져오기(url)
-        #     image_res = requests.get(image_url)
-        #     image_res.raise_for_status()
-        #     with open("c:/4조 폴더/my-food-diary/static/assets/img/fimage/{}.jpg".format(titlelist[i*100+idx]),"wb") as f: #mimage폴더에 파일 생성
-        #         f.write(image_res.content) #파일에 이미지 저장
-        # except:
-        #     errorlist.append(titlelist[i * 100 + idx])
-        #     print(titlelist[i * 100 + idx])
-        #     print('메인이미지')
+        try:
+            image = soup2.select('div.centeredcrop > img')[0]
+            image_url = image["src"] #src속성 가져오기(url)
+            image_res = requests.get(image_url)
+            image_res.raise_for_status()
+            with open("c:/4조 폴더/my-food-diary/static/assets/img/fimage/{}.jpg".format(titlelist[i*100+idx]),"wb") as f: #mimage폴더에 파일 생성
+                f.write(image_res.content) #파일에 이미지 저장
+        except:
+            errorlist.append(titlelist[i * 100 + idx])
+            print(titlelist[i * 100 + idx])
+            print('메인이미지')
 
         #조리시간 가져오기
-        # try:
-        #     time = soup2.select('span.view2_summary_info2')[0]
-        #     timelist[i*100+idx]= time.get_text()
-        # except:
-        #     errorlist.append(titlelist[i * 100 + idx])
-        #     print(titlelist[i * 100 + idx])
-        #     print('시간')
+        try:
+            time = soup2.select('span.view2_summary_info2')[0]
+            timelist[i*100+idx]= time.get_text()
+        except:
+            errorlist.append(titlelist[i * 100 + idx])
+            print(titlelist[i * 100 + idx])
+            print('시간')
 
         #조리순서 내용 및 dimage 경로 딕셔너리 만들기
         cnt= 0 #순서가 몇까지 있는지 확인하기위한 변수
@@ -89,13 +89,13 @@ for i in range(1,6):  # 페이지 돌리기
                 if cnt == 0:
                     #첫번째 실행 시 딕셔너리안에 벨류값을 리스트형태로 생성 {key: [value]}
                     steplist[i*100+idx] = {details:"static/assets/img/dimage/"+titlelist[i*100+idx] +"/{}.jpg".format(snum+1)}
-                    # dimagelist[i*100+idx] = {str(snum+1):"static/assets/img/dimage/"+titlelist[i*100+idx] +"/{}.jpg".format(snum+1)}
+                    dimagelist[i*100+idx] = {str(snum+1):"static/assets/img/dimage/"+titlelist[i*100+idx] +"/{}.jpg".format(snum+1)}
                     cnt +=1
                 else: #첫번째 제외 벨류값리스트에 추가
 
                     steplist[i*100+idx
                     ][details] = "static/assets/img/dimage/"+titlelist[i*100+idx] +"/{}.jpg".format(snum+1)
-                    # dimagelist[i*100+idx][str(snum+1)] = "static/assets/img/dimage/"+titlelist[i*100+idx] +"/{}.jpg".format(snum+1)
+                    dimagelist[i*100+idx][str(snum+1)] = "static/assets/img/dimage/"+titlelist[i*100+idx] +"/{}.jpg".format(snum+1)
                     cnt +=1
             RecipeDb().update(str(steplist[i * 100 + idx]).replace("\'","\""),titlelist[i * 100 + idx])
         except:
@@ -103,53 +103,53 @@ for i in range(1,6):  # 페이지 돌리기
             print(titlelist[i * 100 + idx])
             print('조리순서 or 상세이미지경로')
         #조리순서 이미지 가져오기
-        # for l in range(0,cnt): # 조리순서 총갯수만큼 반복
-        #     try:
-        #         soup2.select('div#stepimg{} > img'.format(l+1))[0]
-        #         step_image = soup2.select('div#stepimg{} > img'.format(l+1))[0] # #은 아이디지정할때 씀 class는 . 하위태그는 >
-        #         step_image_url = step_image["src"]
-        #         step_image_res = requests.get(step_image_url)
-        #         step_image_res.raise_for_status()
-        #         path = 'c:/4조 폴더/my-food-diary/static/assets/img/fimage/{}'.format(
-        #             titlelist[i * 100 + idx])  # 폴더 생성 경로 및 이름 지정
-        #         os.makedirs(path, exist_ok=True)  # 폴더생성 명령어 exist_ok=True는 폴더가 이미 있을 시엔 생성안함
-        #         with open(
-        #                 "c:/4조 폴더/my-food-diary/static/assets/img/fimage/{}/{}.jpg".format(titlelist[i * 100 + idx],(l+1)),
-        #                 "wb") as f:
-        #             f.write(step_image_res.content)
-        #     except:
-        #         errorlist.append(titlelist[i * 100 + idx])
-        #         print(titlelist[i * 100 + idx])
-        #         print('스탭이미지' +str(l+1))
+        for l in range(0,cnt): # 조리순서 총갯수만큼 반복
+            try:
+                soup2.select('div#stepimg{} > img'.format(l+1))[0]
+                step_image = soup2.select('div#stepimg{} > img'.format(l+1))[0] # #은 아이디지정할때 씀 class는 . 하위태그는 >
+                step_image_url = step_image["src"]
+                step_image_res = requests.get(step_image_url)
+                step_image_res.raise_for_status()
+                path = 'c:/4조 폴더/my-food-diary/static/assets/img/fimage/{}'.format(
+                    titlelist[i * 100 + idx])  # 폴더 생성 경로 및 이름 지정
+                os.makedirs(path, exist_ok=True)  # 폴더생성 명령어 exist_ok=True는 폴더가 이미 있을 시엔 생성안함
+                with open(
+                        "c:/4조 폴더/my-food-diary/static/assets/img/fimage/{}/{}.jpg".format(titlelist[i * 100 + idx],(l+1)),
+                        "wb") as f:
+                    f.write(step_image_res.content)
+            except:
+                errorlist.append(titlelist[i * 100 + idx])
+                print(titlelist[i * 100 + idx])
+                print('스탭이미지' +str(l+1))
 
         # 레시피에 따른 식재료 가져오기
-        # ingrs = soup2.select('div.ready_ingre3 > ul > a > li')
-        # try:
-        #     for ingr in ingrs: #inum은 한 레시피에 여러 식재료가 담기기때문에 불러오기위한 숫자
-        #         ingrnum += 1 #ingr테이블에 저장하기 위한 숫자
-        #         ingrid= ''
-        #         ingr_q = ''
-        #         ingrname = ingr.get_text()
-        #         ingrname = ingrname[:ingrname.find(' ')] #식자재 이름
-        #         ingr_q = ingr.get_text()
-        #         ingr_q = ingr_q[ingr_q.rfind(' '):].strip() #식자재 분량
-        #         if ingrname not in IngrDb().select(): #ingr테이블에 식자재가 없을 경우
-        #             IngrDb().insert(ingrnum,1,ingrname) #ingr테이블에 식자재 저장
-        #         ingrid = IngrDb().select_id(ingrname) #식자재이름으로 식자재번호 불러오기
-        #         RecipeDb().ingr_insert(allnum,ingrid,ingr_q) #레시피별 식자재저장
-        # except:
-        #     errorlist.append(titlelist[i * 100 + idx])
-        #     print(str(allnum))
-        #     print(titlelist[i * 100 + idx])
-        #     print('식재료 저장 or 레시피별식재료 저장')
+        ingrs = soup2.select('div.ready_ingre3 > ul > a > li')
+        try:
+            for ingr in ingrs: #inum은 한 레시피에 여러 식재료가 담기기때문에 불러오기위한 숫자
+                ingrnum += 1 #ingr테이블에 저장하기 위한 숫자
+                ingrid= ''
+                ingr_q = ''
+                ingrname = ingr.get_text()
+                ingrname = ingrname[:ingrname.find(' ')] #식자재 이름
+                ingr_q = ingr.get_text()
+                ingr_q = ingr_q[ingr_q.rfind(' '):].strip() #식자재 분량
+                if ingrname not in IngrDb().select(): #ingr테이블에 식자재가 없을 경우
+                    IngrDb().insert(ingrnum,1,ingrname) #ingr테이블에 식자재 저장
+                ingrid = IngrDb().select_id(ingrname) #식자재이름으로 식자재번호 불러오기
+                RecipeDb().ingr_insert(allnum,ingrid,ingr_q) #레시피별 식자재저장
+        except:
+            errorlist.append(titlelist[i * 100 + idx])
+            print(str(allnum))
+            print(titlelist[i * 100 + idx])
+            print('식재료 저장 or 레시피별식재료 저장')
 
         #레시피 DB에 저장
-        # try:
-        #     RecipeDb().insert(allnum,1,None,now,titlelist[i * 100 + idx],timelist[i * 100 + idx],mimagelist[i * 100 + idx],str(steplist[i * 100 + idx]).replace("\'","\""),str(dimagelist[i * 100 + idx]).replace("\'","\""),0,0,1)
-        # except:
-        #     errorlist.append(titlelist[i * 100 + idx])
-        #     print(titlelist[i * 100 + idx])
-        #     print('레시피저장')
+        try:
+            RecipeDb().insert(allnum,1,None,now,titlelist[i * 100 + idx],timelist[i * 100 + idx],mimagelist[i * 100 + idx],str(steplist[i * 100 + idx]).replace("\'","\""),str(dimagelist[i * 100 + idx]).replace("\'","\""),0,0,1)
+        except:
+            errorlist.append(titlelist[i * 100 + idx])
+            print(titlelist[i * 100 + idx])
+            print('레시피저장')
 
 # print(titlelist[111])  # 제목 특수문자 제외
 # print(titlename[111])  # 제목원본
