@@ -50,6 +50,11 @@
 | 2021.02 | 01~   | 구현               |
 
 
+#### 메인 화면
+<p aligin="center">
+ <img src="https://user-images.githubusercontent.com/76922918/155883409-cf448176-a5ee-4a95-9776-710821fa944c.gif">
+</p>
+
 
 #### 개발자 정보
 
