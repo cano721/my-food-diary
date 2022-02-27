@@ -54,11 +54,11 @@
 
 
 
-#### 초기 db 데이터 크롤링
+#### 초기 db 데이터 크롤링([경로](./frame/scraping/scraping.py))
 
-<img src="https://github.com/cano721/my-food-diary/images/스크롤1.png?raw=true">
+<img src="https://github.com/cano721/my-food-diary/blob/master/images/스크롤1.JPG?raw=true">
 
-<img src="https://github.com/cano721/my-food-diary/images/스크롤2.png?raw=true">
+
 
 * 초기 식재료 및 레시피 데이터 db 구축을 위한 크롤링 작업
   * beautifulsoup을 통한 웹크롤링과 정규화를 통한 데이터 처리
