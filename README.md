@@ -70,6 +70,7 @@
 <p aligin="center">
  <img src="https://user-images.githubusercontent.com/76922918/155883409-cf448176-a5ee-4a95-9776-710821fa944c.gif">
 </p>
+
 * 오늘의 추천 : 추천도 높은 순서대로 3종류 추천
 * 레시피 이미지: 레시피 중 일부 이미지 표시
 * 최근 작성된 리뷰
