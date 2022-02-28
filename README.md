@@ -106,6 +106,7 @@
 <p aligin="center">
  <img src="https://user-images.githubusercontent.com/76922918/155885367-d71ad042-8ad4-450b-a1fa-fc242b6e9960.gif">
 </p>
+
 * 식재료에 따른 레시피 추천
 * 초기값은 사용자가 가지고 있는 식재료 선택
 * 식재료 검색해서 추가하여 검색 가능
@@ -118,6 +119,7 @@
 <p aligin="center">
  <img src="https://user-images.githubusercontent.com/76922918/155885415-22016926-4663-40d2-a7b8-bc524b49286d.gif">
 </p>
+
 * 레시피 재료 소개
 * 조리방법 소개
 * 레시피 평가 및 리뷰
